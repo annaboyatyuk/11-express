@@ -1,0 +1,35 @@
+{
+  "name": "09-rest-persistence",
+  "version": "1.0.0",
+  "description": "![cf](https://i.imgur.com/7v5ASc8.png) Lab 09: Vanilla REST API w/ Persistence",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint **/*.js",
+    "start": "node index.js",
+    "watch": "nodemon index.js",
+    "test-watch": "jest --watchAll",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/annaboyatyuk/09-rest-persistence.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/annaboyatyuk/09-rest-persistence/issues"
+  },
+  "homepage": "https://github.com/annaboyatyuk/09-rest-persistence#readme",
+  "dependencies": {
+    "babel-env": "^2.4.1",
+    "babel-eslint": "^8.2.3",
+    "babel-register": "^6.26.0",
+    "dotenv": "^6.0.0",
+    "eslint": "^4.19.1",
+    "express": "^4.16.3",
+    "jest": "^23.1.0",
+    "superagent": "^3.8.3",
+    "uuid": "^3.2.1"
+  }
+}
