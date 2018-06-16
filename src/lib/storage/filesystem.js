@@ -1,13 +1,14 @@
 'use strict';
-const fs = require('fs');
 
-const storage = module.exports = {};
+import { readFile, readdir, writeFile } from 'fs';
+
+const storage = {};
 
 const dataDirectory = `${__dirname}/../../../data`;
 
 let readFilePromise = function(filename) {
   return new Promise(function(resolve, reject) {
-    fs.readFile(filename, function(err, data){
+    readFile(filename, function(err, data){
       if (err)
         reject(err);
       else
@@ -18,7 +19,7 @@ let readFilePromise = function(filename) {
 
 storage.getAll = () => {
   return new Promise( (resolve,reject) => {
-    fs.readdir(dataDirectory, (err,files) => {
+    readdir(dataDirectory, (err,files) => {
       if(err) {
         reject(err);
       }
@@ -45,7 +46,7 @@ storage.getAll = () => {
 storage.get = (id) => {
   return new Promise( (resolve,reject) => {
     let file = `${dataDirectory}/${id}.json`;
-    fs.readFile(file, (err,data) => {
+    readFile(file, (err,data) => {
       if ( data ) {
         let obj = JSON.parse(data.toString());
         resolve(obj);
@@ -61,10 +62,12 @@ storage.save = (data) => {
 
     let file = `${dataDirectory}/${data.id}.json`;
     let text = JSON.stringify(data);
-    fs.writeFile( file, text, (err) => {
+    writeFile( file, text, (err) => {
       if(err) { reject(err); }
       resolve(data);
     });
   });
 };
 
+
+export default storage;
