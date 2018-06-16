@@ -1,19 +1,27 @@
 'use strict';
 
-let http = require('http');
+import express from 'express';
+let app = express();
 
-const router = require('./lib/router.js');
-require('./api/api.js');
+// Express body and URL parsers
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
 
+// Our modules -- import the api and "use" it as middleware for express
+import router from './api/api.js';
+app.use( router );
+
+// Flag to know if we are up and going
 let isRunning = false;
 
-const app = http.createServer( router.route );
-
+let server;
 module.exports = {
+
   start: (port) => {
     if(! isRunning) {
-      app.listen(port, (err) => {
+      server = app.listen(port, (err) => {
         if(err) { throw err; }
+        // Tick the running flag
         isRunning = true;
         console.log('Server is up on port', port);
       });
@@ -24,7 +32,7 @@ module.exports = {
   },
 
   stop: () => {
-    app.close( () => {
+    server.close( () => {
       isRunning = false;
       console.log('Server has been stopped');
     });

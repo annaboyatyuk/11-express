@@ -1,16 +1,16 @@
 'use strict';
 
-const storage = require('../lib/storage/data-store.js');
-const uuid = require('uuid/v1');
+import storage from '../lib/storage/data-store.js';
+import uuid from 'uuid/v1';
+
 
 class Note{
 
   constructor(config) {
     this.id = uuid();
     this.createdOn = new Date();
-    this.title = config && config.title || '';
     this.name = config && config.name || '';
-    this.content = config && config.content || '';
+    this.grapes = config && config.grapes || '';
   }
 
 
@@ -36,4 +36,4 @@ class Note{
 
 }
 
-module.exports = Note;
+export default Note;
