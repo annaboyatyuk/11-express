@@ -4,7 +4,6 @@
 const superagent = require('superagent');
 
 import app from '../../../src/app';
-// const app = require('../../../src/app');
 
 describe('app', () => {
 

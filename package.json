@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "watch": "nodemon index.js",
-    "test": "jest"
+    "test": "jest --verbose --coverage",
+    "lint": "eslint"
   },
   "dependencies": {
     "babel-env": "^2.4.1",
